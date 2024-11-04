@@ -2,6 +2,7 @@ import pygame
 import sys
 import random
 import time
+#Creates the maze so it can be navigated later
 def baseMaze(maze):
     maze = [
         ["_"] * 14+[" "]+["_"],
@@ -24,6 +25,7 @@ def baseMaze(maze):
         ["_"] * 16
     ]
     return maze
+#The function to print the maze as being basic
 def baseMazePrint(printmaze):
     cell_size = width // len(printmaze[0]), height // len(printmaze)
     
@@ -39,7 +41,7 @@ def baseMazePrint(printmaze):
             elif printmaze[i][j] == " ":
                 pygame.draw.rect(screen, (0, 0, 0), rect)
     pygame.display.update()
-    
+ #The function to print the maze as being updated   
 def printMaze(printmaze):
     cell_size = width // len(printmaze[0]), height // len(printmaze)
     
@@ -53,17 +55,17 @@ def printMaze(printmaze):
             elif printmaze[i][j] == "Ω":
                 pygame.draw.rect(screen, (0, 255, 0), rect)
     pygame.display.update()
-
+#Adds randoms moves to be used
 def addingMoves(lst):
     lst.append(random.randint(1, 4))
     lst.append(random.randint(1, 4))
-
+#Adds the row to the maze
 def rowAdder(row, col, underScoreadd, addmaze):
     if not underScoreadd:
         addmaze[row][col] = "_"
     else:
         addmaze[row][col] = " "
-
+#Uses the radnom mvoes to move to the open spot in the maze to be used
 def moving(guy, rowcol, underScoreChange, amount, playmaze):
     
     score = 0
@@ -153,10 +155,11 @@ guylist = [[] for _ in range(32)]
 scorelist = [0] * 32
 generaltrack = 0
 tStart=time.time()
+#this is the main function that loops until the maze is solved
 while gameOn:
     generaltrack += 2
     amount += 2
-
+    #creates 32 different "people" that will attempt the maze and get scores depending how they do and then evolve until the maze is complete
     for _ in range(32):
         maze = baseMaze(maze)
         rowcol = [16, 7]  # Starting position adjusted to the middle of the bottom row
