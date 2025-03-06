@@ -47,11 +47,3 @@ The main loop of the simulation is in the `while gameOn` block. It performs the 
 ## Pygame Initialization
 
 The Pygame library is used to visualize the maze and the movement of the "people". The screen is set to 800x800 pixels, and the maze is displayed using rectangles.
-
-## Example Output
-
-The simulation prints the time taken to solve the maze once the game is over.
-
-## License
-
-This project is licensed under the MIT License.
